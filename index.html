@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,158 +9,161 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js doesn't
+    work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-		<div class="row">
-			<div class="col-lg-3"></div>
-			<div class="col-lg-6">
-				<div>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div>
 					<textarea class='form-control' placeholder="Write something..." id="message"
-                                          name="message" size='20'></textarea><span id="characters">0<span>
-				</div>
-				<div>
-					<div class="checkbox">
-						<label for="deptCheck"><input type="checkbox" value="" class="checkbox-inline"
-                                                                  id="deptCheck">Select a department to add at the end
-                                            of the text
+                              name="message" size='20'></textarea>
+                <span id="characters">0</span>
+            </div>
+            <div>
+                <div class="checkbox">
+                    <label for="deptCheck"><input type="checkbox" value="" class="checkbox-inline"
+                                                  id="deptCheck">Select a department to add at the end
+                        of the text
 
-                                        <select class="form-control" id="departments">
-                                                <option>Dept 1</option>
-<option>Dept 2</option>
-<option>Dept 3</option>
-<option>Dept 4</option>
-<option>Dept 5</option>
-<option>Dept 6</option>
-<option>Dept 7</option>
-<option>Dept 8</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label for="usernameText" id="userText">
-                                        <p id="from-txt" hidden>FROM ADMIN:</p>
-                                        <input type="checkbox" id="usernameText">Attach the text
-                                        "FROM ADMIN: " at the beginning of the text
-                                    </label>
-                                </div>
+                        <select class="form-control" id="departments">
+                            <option>Dept 1</option>
+                            <option>Dept 2</option>
+                            <option>Dept 3</option>
+                            <option>Dept 4</option>
+                            <option>Dept 5</option>
+                            <option>Dept 6</option>
+                            <option>Dept 7</option>
+                            <option>Dept 8</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="usernameText">
+                        <p id="from-txt" hidden>FROM ADMIN:</p>
+                        <input type="checkbox" id="usernameText">Attach the text
+                        "FROM ADMIN: " at the beginning of the text
+                    </label>
+                </div>
 
-                                <div class="checkbox">
-                                    <label for="dont-reply" id="userText">
-                                        <p id="dr-txt" hidden>DON'T REPLY</p>
-                                        <input type="checkbox" id="dont-reply">Attach "DON'T REPLY" at the end of the
-                                        text
-                                    </label>
-                                </div>
-                            </div>
-			</div>
-			<div class="col-lg-6"></div>
-		</div>
-	</div>
+                <div class="checkbox">
+                    <label for="dont-reply" id="userText">
+                        <p id="dr-txt" hidden>DON'T REPLY</p>
+                        <input type="checkbox" id="dont-reply">Attach "DON'T REPLY" at the end of the
+                        text
+                    </label>
+                </div>
+                <div> <p class="well">when you deselect the checkbox, a sweetalert alert box appears</p></div>
+            </div>
+        </div>
+        <div class="col-lg-6"></div>
+    </div>
+</div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-	<script src="js/sweetalert.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/sweetalert.min.js"></script>
 
-	 <script type="text/javascript">
-        var minLength = 0;
-        $('#message').keyup(function () {
-            var length = $(this).val().length;
-            var length = minLength + length;
-            var texting;
-            //get the extra characters when you divide the typed characters by 140
-            // i.e. 285 % 140 = 5
-            var extra_one = length % 140;
+<script type="text/javascript">
+    var minLength = 0;
+    $('#message').keyup(function () {
+        var length = $(this).val().length;
+        var length = minLength + length;
+        var texting;
+        //get the extra characters when you divide the typed characters by 140
+        // i.e. 285 % 140 = 5
+        var extra_one = length % 140;
 
-            // remove the extra characters and the divide this value by 140 to get
-            // the amount to pay for the characters i.e. (285 - 5)/140 = 2 that means
-            // the 1st charge is KES. 2
-            var extra_exact = (length - extra_one) / 140;
+        // remove the extra characters and the divide this value by 140 to get
+        // the amount to pay for the characters i.e. (285 - 5)/140 = 2 that means
+        // the 1st charge is KES. 2
+        var extra_exact = (length - extra_one) / 140;
 
-            // and then add 1 for the extra_one (5 characters) thus charge is 3
-            var charge = extra_exact + 1;
-            texting = "You have typed "+length+" characters. SMS CHARGE FOR EACH NUMBER: "+ charge;
-            $('#characters').text(texting)
-        });
-    </script>
+        // and then add 1 for the extra_one (5 characters) thus charge is 3
+        var charge = extra_exact + 1;
+        texting = "You have typed " + length + " characters. SMS CHARGE FOR EACH NUMBER: " + charge;
+        $('#characters').text(texting)
+    });
+</script>
 
-    <script type="text/javascript">
-        $('#deptCheck').click(function () {
+<script type="text/javascript">
+    $('#deptCheck').click(function () {
 
-            var theMessage = $("#message").val();
-            var theDepartment = $("#departments").find(":selected").text();
+        var theMessage = $("#message").val();
+        var theDepartment = $("#departments").find(":selected").text();
 
-            if ($(this).is(":checked")) {
+        if ($(this).is(":checked")) {
 
-                console.log(theMessage + theDepartment);
-                $("#message").val(theMessage + " --" + theDepartment);
-            }
-            else {
-                swal({
-                    title: "Added Department",
-                    text: "You have added " + theDepartment + " at the end of your SMS. Please remove it to avoid extra charges on your SMS",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Cool",
-                    closeOnConfirm: true
-                });
-            }
-        });
-    </script>
-    <script type="text/javascript">
-        $('#usernameText').click(function () {
-            var theMessage = $("#message").val();
-            var fromTxt = $('#from-txt').text();
+            console.log(theMessage + theDepartment);
+            $("#message").val(theMessage + " --" + theDepartment);
+        }
+        else {
+            swal({
+                title: "Added Department",
+                text: "You have added " + theDepartment + " at the end of your SMS. Please remove it to avoid extra charges on your SMS",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Cool",
+                closeOnConfirm: true
+            });
+        }
+    });
+</script>
+<script type="text/javascript">
+    $('#usernameText').click(function () {
+        var theMessage = $("#message").val();
+        var fromTxt = $('#from-txt').text();
+        console.log(fromTxt);
+
+        if ($(this).is(":checked")) {
+
             console.log(fromTxt);
+            $("#message").val(fromTxt + " " + theMessage);
+        } else {
+            swal({
+                title: fromTxt,
+                text: "You have included " + fromTxt + " at the beginning of your SMS. Please remove it to avoid extra charges on your SMS",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Cool",
+                closeOnConfirm: true
+            });
+        }
+    })
+</script>
 
-            if ($(this).is(":checked")) {
+<script type="text/javascript">
+    $('#dont-reply').click(function () {
+        var theMessage = $("#message").val();
+        var drTxt = $('#dr-txt').text();
+        console.log(drTxt);
 
-                console.log(fromTxt);
-                $("#message").val(fromTxt + " " + theMessage);
-            } else {
-                swal({
-                    title: fromTxt,
-                    text: "You have included " + fromTxt + " at the beginning of your SMS. Please remove it to avoid extra charges on your SMS",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Cool",
-                    closeOnConfirm: true
-                });
-            }
-        })
-    </script>
+        if ($(this).is(":checked")) {
 
-    <script type="text/javascript">
-        $('#dont-reply').click(function () {
-            var theMessage = $("#message").val();
-            var drTxt = $('#dr-txt').text();
             console.log(drTxt);
-
-            if ($(this).is(":checked")) {
-
-                console.log(drTxt);
-                $("#message").val(theMessage + " " + drTxt);
-            } else {
-                swal({
-                    title: drTxt,
-                    text: "You have added " + drTxt + " at the end of your SMS. Please remove it to avoid extra charges on your SMS",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Cool",
-                    closeOnConfirm: true
-                });
-            }
-        })
-    </script>
-  </body>
+            $("#message").val(theMessage + " " + drTxt);
+        } else {
+            swal({
+                title: drTxt,
+                text: "You have added " + drTxt + " at the end of your SMS. Please remove it to avoid extra charges on your SMS",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Cool",
+                closeOnConfirm: true
+            });
+        }
+    })
+</script>
+</body>
 </html>
